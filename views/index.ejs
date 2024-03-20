@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <title>View</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+    <script src="/js/bootstrap.js"></script>
+  </head>
+  <body>
+    <div class="content">
+      <h1>Thêm sản phẩm</h1>
+      <form action="/save" method="post" enctype="multipart/form-data">
+        <div class="mb-3 row">
+          <label for="productId" class="col-sm-2 col-form-label"
+            >Ma san pham</label
+          >
+          <div class="col-sm-4">
+            <input
+              type="text"
+              name="productId"
+              class="form-control"
+              placeholder="Ma san pham"
+            />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="productName" class="col-sm-2 col-form-label"
+            >Tên san pham</label
+          >
+          <div class="col-sm-4">
+            <input
+              type="text"
+              name="productName"
+              class="form-control"
+              placeholder="Tên sản phẩm"
+            />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="quantity" class="col-sm-2 col-form-label">Số lượng</label>
+          <div class="col-sm-4">
+            <input
+              type="number"
+              name="quantity"
+              class="form-control"
+              placeholder="Số lượng"
+            />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="image" class="col-sm-2 col-form-label">Số lượng</label>
+          <div class="col-sm-4">
+            <input type="file" name="quantity" class="form-control" required />
+          </div>
+        </div>
+        <input type="submit" value="Thêm" class="btn btn-primary" />
+      </form>
+    </div>
+    <div class="">
+      <h2>Danh sách hàng hóa</h2>
+      <form method="post" action="/delete">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Mã sản phẩm</th>
+              <th>Tên sản phẩm</th>
+              <th>Số lương</th>
+              <th>Hình ảnh</th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+          <tbody>
+             <% for(var i = 0; i < data.length; i++) {%>
+                <tr>
+                  <td><%= data[i].productId %></td>
+                  <td><%= data[i].productName %></td>
+                  <td><%= data[i].quantity %></td>
+                  <td><img src="<%= data[i].image %>" alt=""  width="100px" height="100px"/></td>
+                  <td>
+                    <!-- <a href="/edit/<%= data[i].productId %>" class="btn btn-primary">Sửa</a>
+                    <a href="/delete/<%= data[i].productId %>" class="btn btn-danger">Xóa</a> -->
+                    <input type="checkbox" value="<%= data[i].productId %>" />
+                  </td>
+                  
+              <%}%>
+          </tbody>
+        </table>
+        <input type="submit" value="Xóa" class="btn btn-danger" />
+      </form>
+   
+    </div>
+  </body>
+</html>
